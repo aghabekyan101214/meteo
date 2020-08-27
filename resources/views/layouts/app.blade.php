@@ -28,7 +28,7 @@
     <!-- Select2 Css -->
 {{--    <link href="{{ asset("assets/select2/dist/css/select2.min.css") }}" rel="stylesheet" />--}}
     <!-- DateRangePicker css -->
-{{--    <link href="{{ asset("assets/daterangepicker/daterangepicker.css") }}" rel="stylesheet">--}}
+    <link href="{{ asset("assets/daterangepicker/daterangepicker.css") }}" rel="stylesheet">
 </head>
 <body class="fix-header">
 
@@ -98,6 +98,13 @@
                         </a>
                     </li>
 
+                    <li>
+                        <a href="{{ route("metar") }}" class="waves-effect">
+                            <i class="mdi mdi-chart-arc fa-fw"></i>
+                            <span class="hide-menu">Metar Աղյուսակ</span>
+                        </a>
+                    </li>
+
                 </ul>
             </div>
         </div>
@@ -149,9 +156,9 @@
 {{--data table--}}
 {{--<script src="{{asset('assets/plugins/bower_components/datatables/datatables.min.js')}}"></script>--}}
 <!-- Plugin JavaScript -->
-{{--<script src="{{ asset("assets/moment/moment.min.js") }}"></script>--}}
+<script src="{{ asset("assets/moment/moment.min.js") }}"></script>
 <!--DateRAngePicker Js-->
-{{--<script src="{{ asset("assets/daterangepicker/daterangepicker.js") }}"></script>--}}
+<script src="{{ asset("assets/daterangepicker/daterangepicker.js") }}"></script>
 <script>
     // $(function () {
     //     $('#myTable').DataTable();
@@ -159,7 +166,7 @@
 
     $(document).on("keydown", function(e){
         if(e.key === "Enter") {
-            e.preventDefault();
+            search();
         }
     });
 

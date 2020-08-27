@@ -29,10 +29,6 @@ class CreateBisTable extends Migration
             $table->string("col11", 10);
             $table->string("col12", 10);
             $table->string("col13", 10);
-            $table->string("col14", 10);
-            $table->string("col15", 5)->nullable();
-            $table->string("col16")->nullable();
-            $table->string("col17")->nullable();
             $table->timestamps();
         });
     }

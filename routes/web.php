@@ -17,6 +17,6 @@ Route::get("/read", "FileReadController@start");
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get("",  "BiController@index")->name("main");
-    Route::get("/home",  "BiController@index")->name("main");
+    Route::get("bi",  "BiController@index")->name("main");
+    Route::get("metar",  "MetarController@index")->name("metar");
 });

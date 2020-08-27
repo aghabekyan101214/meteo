@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Bi extends Model
+class Metar extends Model
 {
-    const COLUMNS = 13;
+    //
 }

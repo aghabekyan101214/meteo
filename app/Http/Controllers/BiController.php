@@ -9,7 +9,7 @@ class BiController extends Controller
 {
 
     const VIEW_FOLDER = "bi."; // Path to view folder
-    const ROUTE = "/"; // Current route
+    const ROUTE = "/bi"; // Current route
     const TITLE = "Աղյուսակ Bi"; // Title for resource
 
     /**
@@ -17,11 +17,23 @@ class BiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = Bi::orderBy("id", "DESC")->paginate(10);
+        $sql = Bi::orderBy("id", "DESC");
+        if($request->all()) {
+            for($i = 1; $i <= Bi::COLUMNS; $i++) {
+                if(isset($request->all()["col$i"])) {
+                    $sql->where("col$i", 'like', '%' . $request->all()["col$i"] . "%");
+                }
+            }
+        }
+        if(!is_null($request->from)) {
+            $sql->whereDate("col0", ">=", $request->from)->whereDate("col0", "<=", $request->to);
+        }
+        $data = $sql->paginate(10);
         $title = self::TITLE;
-        return view(self::VIEW_FOLDER . "index", compact("data", 'title'));
+        $columns = Bi::COLUMNS;
+        return view(self::VIEW_FOLDER . "index", compact("data", 'title', 'request', "columns"));
     }
 
     /**
