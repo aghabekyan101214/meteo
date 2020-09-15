@@ -6,7 +6,7 @@
             right: auto!important;
         }
     </style>
-    <div class="white-box">
+    <div class="white-box ">
         <div class="row">
             <div class="col-md-12" style="text-align: right">
                 <a href="/bi">
@@ -32,6 +32,8 @@
                     <th>Дальность вид. на нерабочему курсу</th>
                     <th>Мин. метеорологическая дальность видимости</th>
                     <th>Перпендикулярная составляющая скорости ветра к ВПП/гололед</th>
+                    <th>Значения Давления</th>
+                    <th>Погода</th>
                 </tr>
                 <tr>
                     @for($i = 0; $i <= $columns; $i++)
@@ -59,9 +61,61 @@
                 <tbody>
                 @foreach($data as $key => $value)
                     <tr>
-                        @for($i = 0; $i <= $columns; $i++)
-                            <td>{{ $value->{'col'.$i} }}</td>
-                        @endfor
+                        <td>{{ $value->col0 }}</td>
+                        <td>
+                            @php
+                                $splCol1 = str_split($value->col1);
+                                echo ($splCol1[0] != 0 ? $splCol1[0] : '') . ($splCol1[1] != 0 ? $splCol1[1] : '') .  $splCol1[2] . '°' . ' / ' . $splCol1[3] . 'мс'
+                            @endphp
+                        </td>
+                        <td>{{ $value->col2 }}</td>
+                        <td>
+                            @php
+                                $splCol3 = str_split($value->col3);
+                                echo $splCol3[0] . ' / ' . $splCol3[2] . $splCol3[3] . '%';
+                            @endphp
+                        </td>
+                        <td>
+                            @php
+                                $splCol4 = str_split($value->col4);
+                                echo ($splCol4[0] != 0 ? $splCol4[0] : '')  . ($splCol4[0] == 0 ? ($splCol4[1] == 0 ? '' : $splCol4[1]) : $splCol4[1] ) . $splCol3[2] . '°C' . ' / ' . $splCol4[3] ;
+                            @endphp
+                        </td>
+                        <td>
+                            @php
+                                $splCol5 = str_split($value->col5);
+                                echo ($splCol5[0] != 0 ? $splCol5[0] : '') . $splCol5[1] . 'мс' . ' / ' . $splCol5[2];
+                            @endphp
+                        </td>
+                        <td>
+                            @php
+                                $splCol6 = str_split($value->col6);
+                                echo $splCol6[0] . ' / ' . $splCol6[1] . ' / ' . $splCol6[2];
+                            @endphp
+                        </td>
+                        <td>
+                            @if($value->col7 != '---')
+                                @php
+                                    $splCol7 = str_split($value->col7);
+                                    echo $value->col7 * 10 . 'м';
+                                @endphp
+                            @else
+                                {{ $value->col7 }}
+                            @endif
+                        </td>
+                        <td>{{ $value->col8 }}</td>
+                        <td>{{ $value->col9 * 10 . 'м' }}</td>
+                        <td>{{ $value->col10 * 10 . 'м' }}</td>
+                        <td>{{ $value->col11 }}</td>
+                        <td>{{ $value->col12 * 10 . 'м' }}</td>
+                        <td>
+                            @php
+                                $splCol13 = str_split($value->col13);
+                                echo ($splCol13[0] . $splCol13[1]) * 10 . 'мс' . ' / ' . $splCol13[2];
+                            @endphp
+                        </td>
+                        <td>{{ $value->col14 }}</td>
+                        <td>{{ $value->col15 }}</td>
                     </tr>
                 @endforeach
                 </tbody>
@@ -119,6 +173,7 @@
             let params = urlParams.toString();
             location.href = url + "?" + params;
         }
+
     </script>
 @endsection
 
