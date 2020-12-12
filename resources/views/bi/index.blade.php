@@ -111,7 +111,7 @@
                         <td>
                             @php
                                 $splCol13 = str_split($value->col13);
-                                echo ($splCol13[0] . $splCol13[1]) * 10 . 'мс' . ' / ' . $splCol13[2];
+                                echo ($splCol13[0] . $splCol13[1]) * 1 . 'мс' . ' / ' . $splCol13[2];
                             @endphp
                         </td>
                         <td>{{ $value->col14 }}</td>
