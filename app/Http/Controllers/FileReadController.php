@@ -16,7 +16,6 @@ class FileReadController extends Controller
 
     private static $READ_PATH; // The path, where the file should be read from.
     const MOVE_PATH = "/var/www/html/my/meteo/public/files/read/"; // The path, where the file should be moved after successfully reading.
-    const MOVE_ERROR_PATH = "/var/www/html/my/meteo/public/files/error/"; // The path, where the problematic file should be moved.
     const BI = "bi1";
     const BRS = "brs";
     const METAR = "met";
@@ -24,11 +23,12 @@ class FileReadController extends Controller
 
     private $metar; // Instance for Metar
     private $readDate; // example 0203, 0204, 0205 ... 0301, 0302 ..
-
+    private static $move_error_path; // The path, where the problematic file should be moved.
 
     public function __construct()
     {
         self::$READ_PATH = env("FILE_READ_PATH");
+        self::$move_error_path = env("MOVE_ERROR_PATH");
     }
 
     /**
@@ -255,7 +255,7 @@ class FileReadController extends Controller
     {
         $explodedFile = explode("/", $filepath);
         $file = end($explodedFile);
-        if($error) copy($filepath, self::MOVE_ERROR_PATH . $file);
+        if($error) copy($filepath, self::$move_error_path . $file);
 //        else rename($filepath, self::MOVE_PATH . $file);
     }
 
