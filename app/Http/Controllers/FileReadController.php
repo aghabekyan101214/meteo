@@ -136,7 +136,7 @@ class FileReadController extends Controller
 
     private function findMetar($filepath)
     {
-        $newPath = explode('/', $filepath);
+        $newPath = explode(env('DELIMITER'), $filepath);
         unset($newPath[count($newPath) - 1]);
         $newPath = implode('/', $newPath);
         $newPath .= '/' . self::METAR . $this->readDate . '.' . self::FILE_EXTENSION_TEL;
@@ -253,7 +253,7 @@ class FileReadController extends Controller
      */
     private function moveFile($error, $filepath)
     {
-        $explodedFile = explode("/", $filepath);
+        $explodedFile = explode(env('DELIMITER'), $filepath);
         $file = end($explodedFile);
         if($error) copy($filepath, self::$move_error_path . $file);
 //        else rename($filepath, self::MOVE_PATH . $file);
