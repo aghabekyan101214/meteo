@@ -12,11 +12,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get("/read", "FileReadController@start");
-Auth::routes();
+Auth::routes([
+    'register' => false
+]);
 
 Route::group(['middleware' => 'auth'], function () {
+    Route::get("/",  "BiController@index")->name("main");
     Route::get("bi",  "BiController@index")->name("main");
     Route::get("metar",  "MetarController@index")->name("metar");
 });
