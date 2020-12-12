@@ -70,7 +70,6 @@ class FileReadController extends Controller
         $date = $this->readDate;
         $expType = explode("/", $filePath);
         $type = end($expType);
-
         // Read the file, which is created today
         if(self::BI . $date . '.' . self::FILE_EXTENSION_TEL == $type) {
             $this->manageBiType($filePath);
@@ -131,7 +130,7 @@ class FileReadController extends Controller
             }
         }
         fclose($myFile);
-//        $this->moveFile($error, $filePath);
+        $this->moveFile($error, $filePath);
     }
 
 
@@ -216,52 +215,6 @@ class FileReadController extends Controller
                         $this->metar->value = implode(" ", $explodedLine);
                         $this->metar->save();
                     }
-//                    } else {
-//                        $number = 0;
-//                        $this->metar->col1 = $explodedLine[$number]; $number ++;
-//                        // This can be 'Metar' or 'Metar Cor'
-//                        if($explodedLine[$number] == "COR") {
-//                            $this->metar->col1 .= " " . $explodedLine[$number]; $number ++;
-//                        }
-//                        $this->metar->col2 = $explodedLine[$number]; $number ++;
-//                        $this->metar->col3 = $explodedLine[$number]; $number ++;
-//
-//                        if($explodedLine[$number] == "AUTO" || $explodedLine[$number] == "NIL") {
-//                            $this->metar->col4 = $explodedLine[$number]; $number ++;
-//                        }
-//
-//                        $this->metar->col5 = $explodedLine[$number]; $number ++;
-//
-//                        if(!is_numeric($explodedLine[$number])) {
-//                            // This is case, when this val can consist of 2 part
-//                            $this->metar->col5 .= " " .$explodedLine[$number]; $number ++;
-//                        }
-//
-//                        $this->metar->col6 = $explodedLine[$number]; $number ++;
-//
-//                        // This line comes with first letter 'R'.
-//                        if($explodedLine[$number][0] != "R") {
-//                            $this->metar->col6 .= " " .$explodedLine[$number]; $number ++;
-//                        } else {
-//                            $this->metar->col7 = $explodedLine[$number]; $number ++;
-//                        }
-//
-//
-//                        // regexp replaces all numbers. This line comes without numbers, so replacing numbers and checking if the length changes or not.
-//                        if(strlen(preg_replace("/[^0-9]/", "", $explodedLine[$number] )) > 0) {
-//                            $this->metar->col7 .= " " .$explodedLine[$number]; $number ++;
-//                        }
-//
-//                        // col8
-//
-//                        $this->metar->col9 = $explodedLine[$number]; $number ++;
-//
-//                        // aaa333,
-//                        if(preg_match('/\b[a-zA-Z]{3}\d{3}\b/', $explodedLine[$number]) ) {
-//
-//                        }
-//
-//                    }
 
                     $odd = !$odd;
                     $lastReadDate->time_metar = $count;
@@ -274,7 +227,7 @@ class FileReadController extends Controller
             }
         }
         fclose($myFile);
-//        $this->moveFile($error, $filePath);
+        $this->moveFile($error, $filePath);
     }
 
     /**
@@ -302,8 +255,8 @@ class FileReadController extends Controller
     {
         $explodedFile = explode("/", $filepath);
         $file = end($explodedFile);
-        if($error) rename($filepath, self::MOVE_ERROR_PATH . $file);
-        else rename($filepath, self::MOVE_PATH . $file);
+        if($error) copy($filepath, self::MOVE_ERROR_PATH . $file);
+//        else rename($filepath, self::MOVE_PATH . $file);
     }
 
     /**

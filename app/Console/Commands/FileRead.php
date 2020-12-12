@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Http\Controllers\FileReadController;
 use Illuminate\Console\Command;
 
 class FileRead extends Command
@@ -11,14 +12,14 @@ class FileRead extends Command
      *
      * @var string
      */
-    protected $signature = 'command:name';
+    protected $signature = 'file:read';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Start to read the files';
 
     /**
      * Create a new command instance.
@@ -37,6 +38,7 @@ class FileRead extends Command
      */
     public function handle()
     {
-        return 0;
+        $start = new FileReadController();
+        $start->start();
     }
 }
