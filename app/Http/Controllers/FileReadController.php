@@ -68,7 +68,7 @@ class FileReadController extends Controller
     private function read($filePath)
     {
         $date = $this->readDate;
-        $expType = explode("/", $filePath);
+        $expType = explode(env('DELIMITER'), $filePath);
         $type = end($expType);
         // Read the file, which is created today
         if(self::BI . $date . '.' . self::FILE_EXTENSION_TEL == $type) {
