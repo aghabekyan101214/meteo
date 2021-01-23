@@ -21,9 +21,11 @@
                     <th style="width: 300px">Дата</th>
                     <th>Направление/Скорось Ветра</th>
                     <th>Давление в гПа</th>
-                    <th>Цифра кода общего количества облаков / отню влажность</th>
+                    <th>Ampamacutyun</th>
+                    <th>отню влажность</th>
                     <th>Температура/Цифра кода количества облаков нижнего яруса</th>
                     <th>Макс. порыв ветра/грозы</th>
+                    <th>Օդերևութաբանական երևոյթներ</th>
                     <th>Номер явления/шторм/рабочий курс</th>
                     <th>Высота облаков</th>
                     <th>Давление в мм.рт.ст</th>
@@ -36,7 +38,7 @@
                     <th>Погода</th>
                 </tr>
                 <tr>
-                    @for($i = 0; $i <= $columns; $i++)
+                    @for($i = 0; $i <= $columns + 2; $i++)
                         @if($i == 0)
                             <td>
                                 <input type="text" autocomplete="off" name="datefilter" class="form-control date" value="{{ !is_null($request->from) ? ($request->from . " - " . $request->to) : '' }}"/>
@@ -72,9 +74,10 @@
                         <td>
                             @php
                                 $splCol3 = str_split($value->col3);
-                                echo $splCol3[0] . ' / ' . $splCol3[2] . $splCol3[3] . '%';
+                                echo $splCol3[0];
                             @endphp
                         </td>
+                        <td>{{ $splCol3[2] . $splCol3[3] . '%' }}</td>
                         <td>
                             @php
                                 $splCol4 = str_split($value->col4);
@@ -90,9 +93,10 @@
                         <td>
                             @php
                                 $splCol6 = str_split($value->col6);
-                                echo $splCol6[0] . ' / ' . $splCol6[1] . ' / ' . $splCol6[2];
+                                echo $splCol6[0];
                             @endphp
                         </td>
+                        <td>{{ $splCol6[1] . ' / ' . $splCol6[2] }}</td>
                         <td>
                             @if($value->col7 != '---')
                                 @php
@@ -106,7 +110,7 @@
                         <td>{{ $value->col8 }}</td>
                         <td>{{ $value->col9 * 10 . 'м' }}</td>
                         <td>{{ $value->col10 * 10 . 'м' }}</td>
-                        <td>{{ $value->col11 }}</td>
+                        <td>{{ $value->col11 . 0 }}</td>
                         <td>{{ $value->col12 * 10 . 'м' }}</td>
                         <td>
                             @php

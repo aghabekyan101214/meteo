@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Http\Controllers\FileReadController;
+use App\Http\Controllers\ReadController;
 use Illuminate\Console\Command;
 
 class FileRead extends Command
@@ -38,7 +39,7 @@ class FileRead extends Command
      */
     public function handle()
     {
-        $start = new FileReadController();
+        $start = new ReadController();
         $start->start();
     }
 }

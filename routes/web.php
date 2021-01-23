@@ -17,7 +17,7 @@ Auth::routes([
 ]);
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get("/",  "BiController@index")->name("main");
-    Route::get("bi",  "BiController@index")->name("main");
-    Route::get("metar",  "MetarController@index")->name("metar");
+    Route::get("/",  "TableController@index")->name("main");
+    Route::get("meteo",  "TableController@index")->name("metar");
 });
+

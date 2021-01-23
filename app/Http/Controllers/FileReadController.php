@@ -15,7 +15,6 @@ class FileReadController extends Controller
 {
 
     private static $READ_PATH; // The path, where the file should be read from.
-    const MOVE_PATH = "/var/www/html/my/meteo/public/files/read/"; // The path, where the file should be moved after successfully reading.
     const BI = "bi1";
     const BRS = "brs";
     const METAR = "met";
@@ -36,7 +35,7 @@ class FileReadController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public static function start($count = 1)
+    public function start($count = 1)
     {
         $path = self::$READ_PATH;
         $files = scandir($path);
