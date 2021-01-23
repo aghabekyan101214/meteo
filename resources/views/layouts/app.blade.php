@@ -94,14 +94,7 @@
                     <li>
                         <a href="{{ route("main") }}" class="waves-effect">
                             <i class="mdi mdi-chart-arc fa-fw"></i>
-                            <span class="hide-menu">Bi Աղյուսակ</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="{{ route("metar") }}" class="waves-effect">
-                            <i class="mdi mdi-chart-arc fa-fw"></i>
-                            <span class="hide-menu">Metar Աղյուսակ</span>
+                            <span class="hide-menu">Աղյուսակ</span>
                         </a>
                     </li>
 
