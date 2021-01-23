@@ -22,7 +22,7 @@ class TableController extends Controller
     private function manageSearch(Request $request, &$sql)
     {
         if(!is_null($request->from)) {
-            $sql->whereDate("date", ">=", $request->from)->whereDate("date", "<=", $request->to);
+            $sql->whereDate("created_at", ">=", $request->from)->whereDate("created_at", "<=", $request->to);
         }
         $searchData = $request->all();
         foreach ($searchData as $key => $val) {
