@@ -6,7 +6,6 @@ namespace App\Http\Controllers;
 use App\Meteo;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
-date_default_timezone_set('Asia/Yerevan');
 
 class ReadController extends Controller
 {
