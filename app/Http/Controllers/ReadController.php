@@ -80,7 +80,7 @@ class ReadController extends Controller
     private function read($filePath)
     {
         $explodedDate = explode(" ", $this->readDate);
-//        $date = $explodedDate[0];
+        $date = $explodedDate[0];
 
         $expType = explode(env('DELIMITER'), $filePath);
         $type = end($expType);
