@@ -82,7 +82,6 @@ class ReadController extends Controller
         $explodedDate = explode(" ", $this->readDate);
 //        $date = $explodedDate[0];
 
-        $date = '0320'; // TODO exchange with the above one
         $expType = explode(env('DELIMITER'), $filePath);
         $type = end($expType);
         $explodedTime = explode(":", $explodedDate[1]);
