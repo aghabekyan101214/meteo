@@ -20,9 +20,6 @@ class CreateMeteosTable extends Migration
             $table->string('wind_speed_09', 30)->default('-');
             $table->string('wind_direction_09', 30)->default('-');
             $table->string('bar', 30)->default('-');
-//            $table->string('course_09', 30)->default('-');
-//            $table->string('course_mid', 30)->default('-');
-//            $table->string('course_27', 30)->default('-');
             $table->string('visibility_09', 30)->default('-');
             $table->string('visibility_mid', 30)->default('-');
             $table->string('visibility_27', 30)->default('-');

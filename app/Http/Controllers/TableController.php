@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\MeteoTableExport;
 use App\Meteo;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class TableController extends Controller
 {
@@ -19,15 +22,31 @@ class TableController extends Controller
         return view(self::VIEW_FOLDER . "index", compact("data", 'request'));
     }
 
+    public function export_to_excel(Request $request)
+    {
+        $sql = Meteo::orderBy("id", "DESC");
+        $this->manageSearch($request, $sql);
+        return Excel::download(new MeteoTableExport($sql->get()), 'meteo.xlsx');
+    }
+
     private function manageSearch(Request $request, &$sql)
     {
         if(!is_null($request->from)) {
             $sql->whereDate("created_at", ">=", $request->from)->whereDate("created_at", "<=", $request->to);
         }
         $searchData = $request->all();
+        unset($searchData['_token']);
         foreach ($searchData as $key => $val) {
             if($key == 'from' || $key == 'to' || $key == 'page') continue;
-            $sql->where($key, $val);
+            $val = str_replace(' ', '', $val);
+            if (strpos($val, '-')) {
+                $splVal = explode('-', $val);
+                if (count($splVal) == 2) {
+                    $sql->whereBetween($key, [$splVal[0], $splVal[1]]);
+                }
+            } else {
+                $sql->where($key, $val);
+            }
         }
     }
 }
