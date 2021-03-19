@@ -27,8 +27,8 @@ class MeteoTableExport implements FromCollection, WithHeadings, WithMapping
     public function headings() : array
     {
         return [
-            ['Ամսաթիվ', 'Խոնավություն', 'Ջերմաստիճան', 'Քամու արգ. 09', 'Քամու ուղղ. 09', 'Քամու արգ. 27', 'Քամու ուղղ. 27', 'Ճնշում', 'Տեսանելիություն 09', 'Տեսանելիություն сер.', 'Տեսանելիություն 27', 'Ցողի կետ', 'Շփման գործակից', 'Ամպերի բրձր.', 'Ամպամածություն'],
-            ['Date', 'Humidity', 'Temperature', 'Wind speed 09', 'Wind direction 09', 'Wind speed 27', 'Wind direction 27', 'Pressure', 'Visibility 09', 'Visibility сер.', 'Visibility 27', 'Dew point', 'Contact coefficient', 'Cloud height', 'Cloudiness'],
+            ['Ամսաթիվ (%)', 'Խոնավություն (տոկոս %)', 'Ջերմաստիճան (ցելսիուս)', 'Քամու արգ. 09 (մ/վրկ)', 'Քամու ուղղ. 09 (աստիճան)', 'Քամու արգ. 27 (մ/վրկ)', 'Քամու ուղղ. 27 (աստիճան)', 'Ճնշում (հպա)', 'Տեսանելիություն 09 (մետր)', 'Տեսանելիություն сер. (մետր)', 'Տեսանելիություն 27 (մետր)', 'Ցողի կետ (աստիճան)', 'Շփման գործակից', 'Ամպերի բրձր. (մետր)', 'Ամպամածություն (օկտանտ)'],
+            ['Date', 'Humidity (percent %)', 'Temperature (celsius)', 'Wind speed 09 (m/s)', 'Wind direction 09 (degree)', 'Wind speed 27 (m/s)', 'Wind direction 27 (degree)', 'Pressure (GPA)', 'Visibility 09 (metres)', 'Visibility сер. (metres)', 'Visibility 27 (metres)', 'Dew point (degree)', 'Contact coefficient', 'Cloud height (metres)', 'Cloudiness (octant)'],
         ];
     }
 

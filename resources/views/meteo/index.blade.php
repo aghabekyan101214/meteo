@@ -60,37 +60,37 @@
                 <thead>
                     <tr>
                         <th>Ամսաթիվ</th>
-                        <th>Խոնավություն</th>
-                        <th>Ջերմաստիճան</th>
-                        <th>Քամու արգ. 09</th>
-                        <th>Քամու ուղղ. 09</th>
-                        <th>Քամու արգ. 27</th>
-                        <th>Քամու ուղղ. 27</th>
-                        <th>Ճնշում</th>
-                        <th>Տեսանելիություն 09</th>
-                        <th>Տեսանելիություն сер.</th>
-                        <th>Տեսանելիություն 27</th>
-                        <th>Ցողի կետ</th>
+                        <th>Խոնավություն (տոկոս %)</th>
+                        <th>Ջերմաստիճան (ցելսիուս)</th>
+                        <th>Քամու արգ. 09 (մ/վրկ)</th>
+                        <th>Քամու ուղղ. 09 (աստիճան)</th>
+                        <th>Քամու արգ. 27 (մ/վրկ)</th>
+                        <th>Քամու ուղղ. 27 (աստիճան)</th>
+                        <th>Ճնշում (հպա)</th>
+                        <th>Տեսանելիություն 09 (մետր)</th>
+                        <th>Տեսանելիություն сер. (մետր)</th>
+                        <th>Տեսանելիություն 27 (մետր)</th>
+                        <th>Ցողի կետ (աստիճան)</th>
                         <th>Շփման գործակից</th>
-                        <th>Ամպերի բրձր.</th>
-                        <th>Ամպամածություն</th>
+                        <th>Ամպերի բրձր. (մետր)</th>
+                        <th>Ամպամածություն (օկտանտ)</th>
                     </tr>
                     <tr>
                         <th>Date</th>
-                        <th>Humidity</th>
-                        <th>Temperature</th>
-                        <th>Wind speed 09</th>
-                        <th>Wind direction 09</th>
-                        <th>Wind speed 27</th>
-                        <th>Wind direction 27</th>
-                        <th>Pressure</th>
-                        <th>Visibility 09</th>
-                        <th>Visibility mid.</th>
-                        <th>Visibility 27</th>
-                        <th>Dew point</th>
+                        <th>Humidity (percent %)</th>
+                        <th>Temperature (celsius)</th>
+                        <th>Wind speed 09 (m/s)</th>
+                        <th>Wind direction 09 (degree)</th>
+                        <th>Wind speed 27 (m/s)</th>
+                        <th>Wind direction 27 (degree)</th>
+                        <th>Pressure (GPA)</th>
+                        <th>Visibility 09 (metres)</th>
+                        <th>Visibility mid. (metres)</th>
+                        <th>Visibility 27 (metres)</th>
+                        <th>Dew point (degree)</th>
                         <th>Contact coefficient</th>
-                        <th>Cloud height</th>
-                        <th>Cloudiness</th>
+                        <th>Cloud height (metres)</th>
+                        <th>Cloudiness (octant)</th>
                     </tr>
                     <tr class="input-tr">
                         <th><input autocomplete="off" type="text" placeholder="Ամսաթիվ" class="form-control date" name="created_at" value="{{ !is_null($request->from) ? ($request->from . " - " . $request->to) : '' }}"></th>
