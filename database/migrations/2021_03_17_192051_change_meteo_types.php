@@ -24,7 +24,6 @@ class ChangeMeteoTypes extends Migration
             $table->decimal('visibility_27', 10, 2)->default(null)->charset(null)->nullable()->change();
             $table->decimal('wind_speed_27', 10, 2)->default(null)->charset(null)->nullable()->change();
             $table->decimal('wind_direction_27', 10, 2)->default(null)->charset(null)->nullable()->change();
-            $table->decimal('start_point', 10, 2)->default(null)->charset(null)->nullable()->change();
         });
     }
 
