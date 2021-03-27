@@ -98,6 +98,13 @@
                         </a>
                     </li>
 
+                    <li>
+                        <a href="{{ route("metar") }}" class="waves-effect">
+                            <i class="mdi mdi-chart-arc fa-fw"></i>
+                            <span class="hide-menu">Մետառ</span>
+                        </a>
+                    </li>
+
                 </ul>
             </div>
         </div>

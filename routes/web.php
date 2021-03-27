@@ -18,7 +18,7 @@ Auth::routes([
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get("/",  "TableController@index")->name("main");
-    Route::get("meteo",  "TableController@index")->name("metar");
+    Route::get("/metar",  "MetarController@index")->name("metar");
     Route::post("export-to-excel",  "TableController@export_to_excel")->name("export_to_excel");
 });
 

@@ -41,5 +41,8 @@ class FileRead extends Command
     {
         $start = new ReadController();
         $start->start();
+
+        $metar_start = new FileReadController();
+        $metar_start->start();
     }
 }

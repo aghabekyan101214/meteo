@@ -14,8 +14,12 @@
             <table id="myTable" class="table table-striped">
                 <thead>
                 <tr>
-                    <th>Дата</th>
-                    <th>значение</th>
+                    <th>Ամսաթիվ</th>
+                    <th>Արժեք</th>
+                </tr>
+                <tr>
+                    <th>Date</th>
+                    <th>Value</th>
                 </tr>
                 </thead>
                 <tbody>

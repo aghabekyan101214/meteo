@@ -70,12 +70,9 @@ class FileReadController extends Controller
         $expType = explode(env('DELIMITER'), $filePath);
         $type = end($expType);
         // Read the file, which is created today
-        if(self::BI . $date . '.' . self::FILE_EXTENSION_TEL == $type) {
-            $this->manageBiType($filePath);
-        } elseif(self::METAR . $date . '.' . self::FILE_EXTENSION_TEL == $type) {
+        if(self::METAR . $date . '.' . self::FILE_EXTENSION_TEL == $type) {
             $this->manageMetarType($filePath);
         }
-
     }
 
 
