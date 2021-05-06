@@ -70,10 +70,10 @@
                         <th>Տեսանելիություն 09 (մետր)</th>
                         <th>Տեսանելիություն сер. (մետր)</th>
                         <th>Տեսանելիություն 27 (մետր)</th>
-                        <th>Ցողի կետ (աստիճան)</th>
+                        <th>Ցողի կետ (ջերմաստիճան)</th>
                         <th>Շփման գործակից</th>
-                        <th>Ամպերի բրձր. (մետր)</th>
-                        <th>Ամպամածություն (օկտանտ)</th>
+                        <th>Ամպերի ներքին սահմանի բարձր. (մետր)</th>
+                        <th>Ամպամածության տեսակը և քանակը</th>
                     </tr>
                     <tr>
                         <th>Date</th>
@@ -87,10 +87,10 @@
                         <th>Visibility 09 (metres)</th>
                         <th>Visibility mid. (metres)</th>
                         <th>Visibility 27 (metres)</th>
-                        <th>Dew point (degree)</th>
+                        <th>Dew point (temperature)</th>
                         <th>Contact coefficient</th>
-                        <th>Cloud height (metres)</th>
-                        <th>Cloudiness (octant)</th>
+                        <th>Inner border of clouds (metres)</th>
+                        <th>Cloudiness type and amount</th>
                     </tr>
                     <tr class="input-tr">
                         <th><input autocomplete="off" type="text" placeholder="Ամսաթիվ" class="form-control date" name="created_at" value="{{ !is_null($request->from) ? ($request->from . " - " . $request->to) : '' }}"></th>
@@ -114,17 +114,17 @@
                     @foreach($data as $d)
                         <tr>
                             <td>{{ $d->created_at }}</td>
-                            <td>{{ number_format($d->wet, 2) > 0 ? number_format($d->wet, 2) :  '-' }}</td>
-                            <td>{{ number_format($d->temperature, 2) > 0 ? number_format($d->temperature, 2) : '-' }}</td>
-                            <td>{{ number_format($d->wind_speed_09, 2) > 0 ? number_format($d->wind_speed_09, 2) : '-' }}</td>
-                            <td>{{ number_format($d->wind_direction_09, 2) > 0 ? number_format($d->wind_direction_09, 2) : '-' }}</td>
-                            <td>{{ number_format($d->wind_speed_27, 2) > 0 ? number_format($d->wind_speed_27, 2) : '-' }}</td>
-                            <td>{{ number_format($d->wind_direction_27, 2) > 0 ? number_format($d->wind_direction_27, 2) : '-' }}</td>
-                            <td>{{ number_format($d->bar, 2) > 0 ? number_format($d->bar, 2) : '-' }}</td>
-                            <td>{{ number_format($d->visibility_09, 2) > 0 ? number_format($d->visibility_09, 2) : '-' }}</td>
-                            <td>{{ number_format($d->visibility_mid, 2) > 0 ? number_format($d->visibility_mid, 2) : '-' }}</td>
-                            <td>{{ number_format($d->visibility_27, 2) > 0 ? number_format($d->visibility_27, 2) : '-' }}</td>
-                            <td>{{ $d->start_point ?? '-' }}</td>
+                            <td>{{ $d->wet + 0 }}</td>
+                            <td>{{ $d->temperature + 0 }}</td>
+                            <td>{{ $d->wind_speed_09 + 0 }}</td>
+                            <td>{{ $d->wind_direction_09 + 0 }}</td>
+                            <td>{{ $d->wind_speed_27 + 0 }}</td>
+                            <td>{{ $d->wind_direction_27 + 0 }}</td>
+                            <td>{{ $d->bar + 0 }}</td>
+                            <td>{{ $d->visibility_09 + 0 }}</td>
+                            <td>{{ $d->visibility_mid + 0 }}</td>
+                            <td>{{ $d->visibility_27 + 0 }}</td>
+                            <td>{{ $d->start_point ? $d->start_point + 0 : '-' }}</td>
                             <td>{{ $d->contact_coefficient }}</td>
                             <td>{{ $d->cloud_height }}</td>
                             <td>{{ $d->cloudy }}</td>
