@@ -120,7 +120,7 @@
                             <td>{{ $d->wind_direction_09 + 0 }}</td>
                             <td>{{ $d->wind_speed_27 + 0 }}</td>
                             <td>{{ $d->wind_direction_27 + 0 }}</td>
-                            <td>{{ $d->bar + 0 }}</td>
+                            <td>{{ is_numeric($d->bar) ? ($d->bar + 0) : $d->bar }}</td>
                             <td>{{ $d->visibility_09 + 0 }}</td>
                             <td>{{ $d->visibility_mid + 0 }}</td>
                             <td>{{ $d->visibility_27 + 0 }}</td>
