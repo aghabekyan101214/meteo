@@ -124,7 +124,7 @@
                             <td>{{ $d->visibility_09 + 0 }}</td>
                             <td>{{ $d->visibility_mid + 0 }}</td>
                             <td>{{ $d->visibility_27 + 0 }}</td>
-                            <td>{{ $d->start_point ? $d->start_point + 0 : '-' }}</td>
+                            <td>{{ $d->start_point ? (is_numberic($d->start_point) ? ($d->start_point + 0) : $d->start_point ) : '-' }}</td>
                             <td>{{ $d->contact_coefficient }}</td>
                             <td>{{ $d->cloud_height }}</td>
                             <td>{{ $d->cloudy }}</td>
