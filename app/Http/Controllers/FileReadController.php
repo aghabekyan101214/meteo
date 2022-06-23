@@ -14,6 +14,8 @@ use Carbon\Carbon;
 class FileReadController extends Controller
 {
 
+    use FileHelper;
+
     private static $READ_PATH; // The path, where the file should be read from.
     const BI = "bi1";
     const BRS = "brs";
@@ -26,6 +28,8 @@ class FileReadController extends Controller
 
     public function __construct()
     {
+        self::$MASTER_PATH = env("MASTER_PATH");
+        self::$SLAVE_PATH = env("SLAVE_PATH");
         self::$READ_PATH = env("FILE_READ_PATH");
         self::$move_error_path = env("MOVE_ERROR_PATH");
     }
@@ -37,7 +41,8 @@ class FileReadController extends Controller
      */
     public function start($count = 1)
     {
-        $path = self::$READ_PATH;
+        $path = $this->get_full_path( self::$READ_PATH);
+        if(is_null($path)) return;
         $files = scandir($path);
         $instance = new self();
         $instance->readDate = date('md',strtotime('0 days'));

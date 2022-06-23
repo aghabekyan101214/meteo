@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Log;
 class ReadController extends Controller
 {
 
+    use FileHelper;
+
     const QLI = "qli";
     const BRS = "brs";
     const FD = "fd";
@@ -28,6 +30,8 @@ class ReadController extends Controller
 
     public function __construct()
     {
+        self::$MASTER_PATH = env("MASTER_PATH");
+        self::$SLAVE_PATH = env("SLAVE_PATH");
         self::$READ_PATH = env("FILE_READ_PATH");
         self::$READ_PATH2 = env("FILE_READ_PATH2");
         self::$move_error_path = env("MOVE_ERROR_PATH");
@@ -51,7 +55,8 @@ class ReadController extends Controller
      */
     public function start($count = 1)
     {
-        $path = self::$READ_PATH;
+        $path = $this->get_full_path( self::$READ_PATH);
+        if(is_null($path)) return;
         $files = scandir($path);
         $this->readDate = date('md H:i:s', strtotime('-1 minutes'));
 
@@ -61,7 +66,8 @@ class ReadController extends Controller
             }
         }
 
-        $path2 = self::$READ_PATH2;
+        $path2 = $this->get_full_path(self::$READ_PATH2);
+        if(is_null($path2)) return;
         $files = scandir($path2);
         foreach ($files as $file) {
             if($file != "." && $file != "..") {
